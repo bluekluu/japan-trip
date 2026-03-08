@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japan Trip · March–April 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --sakura: #e8a0b0;
+    --sakura-light: #f7dde5;
+    --sakura-deep: #c96b86;
+    --ink: #1a1520;
+    --ink-soft: #3d3244;
+    --cream: #faf6f0;
+    --paper: #f4ede3;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a0;
+    --moss: #5a7a5e;
+    --moss-light: #d4e4d6;
+    --indigo: #2d3561;
+    --indigo-light: #d0d4e8;
+    --weekend-bg: #fff8f9;
+    --weeknight-bg: #f6f8ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  a.activity-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--sakura);
+    text-underline-offset: 3px;
+    transition: color 0.15s, text-decoration-color 0.15s;
+  }
+  a.activity-link:hover {
+    color: var(--sakura-deep);
+    text-decoration-color: var(--sakura-deep);
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(232,160,176,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(45,53,97,0.4) 0%, transparent 50%);
+  }
+
+  .hero-petals {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .petal {
+    position: absolute;
+    opacity: 0.15;
+    font-size: 20px;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.15; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sakura);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 8vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sakura);
+  }
+
+  .hero-kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.5em;
+    margin-top: 16px;
+    position: relative;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 36px;
+    position: relative;
+  }
+
+  .meta-item {
+    text-align: center;
+  }
+
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+
+  .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gold-light);
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--sakura);
+    margin: 32px auto 0;
+    position: relative;
+    opacity: 0.5;
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    padding: 20px 40px;
+    background: var(--paper);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  /* NAVIGATION */
+  .city-nav {
+    display: flex;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    overflow-x: auto;
+  }
+
+  .city-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+
+  .city-btn:hover { color: rgba(255,255,255,0.8); }
+  .city-btn.active {
+    color: var(--sakura);
+    border-bottom-color: var(--sakura);
+  }
+
+  /* MAIN */
+  main { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* CITY SECTION */
+  .city-section { display: none; }
+  .city-section.active { display: block; }
+
+  .city-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .city-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .city-name-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px;
+    color: var(--ink-soft);
+    opacity: 0.5;
+    margin-left: 4px;
+  }
+
+  .city-dates {
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    padding-bottom: 4px;
+  }
+
+  /* DAY CARD */
+  .day-card {
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .day-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  }
+
+  .day-card.weekend { background: var(--weekend-bg); }
+  .day-card.weeknight { background: var(--weeknight-bg); }
+  .day-card.arrival { background: #f0faf4; }
+  .day-card.departure { background: #fdf8f0; }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .day-card.weekend .day-header { border-left: 4px solid var(--sakura-deep); }
+  .day-card.weeknight .day-header { border-left: 4px solid var(--indigo); }
+  .day-card.arrival .day-header { border-left: 4px solid var(--moss); }
+  .day-card.departure .day-header { border-left: 4px solid var(--gold); }
+
+  .day-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1;
+    min-width: 48px;
+  }
+
+  .day-card.weekend .day-date { color: var(--sakura-deep); }
+  .day-card.weeknight .day-date { color: var(--indigo); }
+  .day-card.arrival .day-date { color: var(--moss); }
+  .day-card.departure .day-date { color: var(--gold); }
+
+  .day-info { flex: 1; }
+
+  .day-name {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.6;
+  }
+
+  .day-hotel {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  .day-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .badge-weekend {
+    background: var(--sakura-light);
+    color: var(--sakura-deep);
+  }
+
+  .badge-weeknight {
+    background: var(--indigo-light);
+    color: var(--indigo);
+  }
+
+  .badge-allday {
+    background: var(--moss-light);
+    color: var(--moss);
+  }
+
+  .badge-arrival {
+    background: var(--moss-light);
+    color: var(--moss);
+  }
+
+  .badge-departure {
+    background: var(--gold-light);
+    color: #7a5a10;
+  }
+
+  /* ACTIVITIES */
+  .activities { padding: 16px 20px; }
+
+  .activity-block {
+    margin-bottom: 14px;
+  }
+
+  .activity-block:last-child { margin-bottom: 0; }
+
+  .time-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .time-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.15;
+  }
+
+  .time-morning { color: var(--gold); }
+  .time-afternoon { color: var(--moss); }
+  .time-evening { color: var(--indigo); }
+  .time-anytime { color: var(--sakura-deep); }
+
+  .activity-list { list-style: none; }
+
+  .activity-list li {
+    padding: 6px 0 6px 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    position: relative;
+    border-bottom: 1px dashed rgba(0,0,0,0.06);
+  }
+
+  .activity-list li:last-child { border-bottom: none; }
+
+  .activity-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.3;
+  }
+
+  .activity-list li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .activity-tag {
+    display: inline-block;
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: middle;
+    font-weight: 500;
+  }
+
+  .tag-food { background: #fdefd5; color: #a05c10; }
+  .tag-nature { background: #d8edd9; color: #2d6030; }
+  .tag-temple { background: #e8dff5; color: #5a3080; }
+  .tag-note { background: #e0e8f8; color: #2d3a70; font-style: italic; }
+
+  .cherry-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--sakura-light);
+    color: var(--sakura-deep);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 4px;
+  }
+
+  /* WORK DAY */
+  .work-day {
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f9f9fb;
+    border: 1px dashed rgba(0,0,0,0.1);
+    opacity: 0.7;
+  }
+
+  .work-day .day-header {
+    border-left: 4px solid #ccc;
+    padding: 10px 20px;
+  }
+
+  .work-day .day-date { color: #999; font-size: 22px; }
+  .work-day-label {
+    font-size: 12px;
+    color: #aaa;
+    font-style: italic;
+    padding: 8px 20px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--ink-soft);
+    opacity: 0.4;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  /* MAP SECTION */
+  /* TIPS */
+  .tips-bar {
+    background: var(--ink);
+    color: rgba(255,255,255,0.7);
+    padding: 16px 32px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tip { font-size: 12px; }
+  .tip strong { color: var(--sakura); }
+
+  /* TRANSIT NOTES */
+  .transit-note {
+    list-style: none;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--ink-soft);
+    padding: 4px 0 4px 4px;
+    border-left: 2px solid var(--sakura);
+    margin: 2px 0 6px 0;
+    opacity: 0.75;
+  }
+
+</style>
+    <meta property="og:title" content="Japan Trip · March–April 2025 🌸">
+    <meta property="og:description" content="24-day cherry blossom itinerary: Tokyo · Kanazawa · Yokohama">
+    <meta property="og:type" content="website">
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-petals" id="petals"></div>
+  <div class="hero-eyebrow">Trip Planner · March–April 2025</div>
+  <h1>日本へ · <em>Japan</em></h1>
+  <div class="hero-kanji">東京 · 金沢 · 横浜</div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">Departure</div>
+      <div class="meta-value">Mar 18, Wed</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Duration</div>
+      <div class="meta-value">24 Days</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Return</div>
+      <div class="meta-value">Apr 11, Sat</div>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+</div>
+
+<!-- TIPS BAR -->
+<div class="tips-bar">
+  <div class="tip">🌸 <strong>Cherry Blossom Season</strong> — Late March & early April are peak sakura weeks</div>
+  <div class="tip">💼 <strong>Working weekdays</strong> — Evenings &amp; weekends only for activities</div>
+  <div class="tip">🍣 <strong>Focus:</strong> Food · Nature · Temples</div>
+</div>
+
+
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--sakura-deep)"></div> Weekend (All Day)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--indigo)"></div> Weeknight (After Work)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--moss)"></div> Arrival Day</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div> Departure Day</div>
+</div>
+
+<!-- CITY NAV -->
+<nav class="city-nav">
+  <button class="city-btn active" onclick="showCity('tokyo1')">Tokyo I<br><small>Mar 18–27</small></button>
+  <button class="city-btn" onclick="showCity('kanazawa')">Kanazawa<br><small>Mar 28–29</small></button>
+  <button class="city-btn" onclick="showCity('yokohama')">Yokohama<br><small>Mar 30–Apr 4</small></button>
+  <button class="city-btn" onclick="showCity('tokyo2')">Tokyo II<br><small>Apr 5–11</small></button>
+</nav>
+
+<main>
+
+<!-- ==================== TOKYO I ==================== -->
+<section class="city-section active" id="tokyo1">
+  <div class="city-header">
+    <div>
+      <div class="city-name">Tokyo <span class="city-name-jp">東京</span></div>
+      <div class="city-dates">Mar 18–27 · Caption by Hyatt Kabutocho → Grand Hyatt Roppongi</div>
+    </div>
+  </div>
+
+  <!-- 3/18 Arrival -->
+  <div class="day-card arrival">
+    <div class="day-header">
+      <div class="day-date">18</div>
+      <div class="day-info">
+        <div class="day-name">Wednesday · Arrival</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-arrival">Arrival Day</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening — Arrives 2:05pm</div>
+        <ul class="activity-list">
+          <li><strong>Check in &amp; freshen up</strong> — Kabutocho is Tokyo's historic financial quarter <span class="activity-tag tag-note">Jet lag tip: stay awake until 9pm!</span></li>
+          <li class="transit-note">🚕 10-min taxi south to Tsukiji, or 1 stop on Toei Asakusa line from Higashi-Nihonbashi → Tsukijishijo</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3021.html" target="_blank" rel="noopener" class="activity-link">Tsukiji Outer Market</a></strong> <span class="activity-tag tag-food">Food</span> — Grab a counter sushi set or tamagoyaki skewers for your first meal in Tokyo; still buzzing in the evening</li>
+          <li class="transit-note">🚶 15-min walk northeast along the canal back toward Nihonbashi</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3034.html" target="_blank" rel="noopener" class="activity-link">Nihonbashi walk</a></strong> — Stroll across the lantern-lit historic bridges; the old commercial soul of Tokyo. 5-min walk back to your hotel from here</li>
+          <li><strong>Early night</strong> — 10h30m flight means rest is key for the weeks ahead</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/19 Thu -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">19</div>
+      <div class="day-info">
+        <div class="day-name">Thursday</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong><a href="https://www.fukagawafudou.gr.jp/en/" target="_blank" rel="noopener" class="activity-link">Fukagawa Fudo-do Temple</a></strong> <span class="activity-tag tag-temple">Temple</span> — 15-min walk southeast from the hotel (or 1 stop on Toei Asakusa line to Monzen-Nakacho). Dramatic evening fire-ritual ceremonies (goma); deeply atmospheric</li>
+          <li class="transit-note">🚶 5-min walk west</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3062.html" target="_blank" rel="noopener" class="activity-link">Kiyosumi Garden twilight</a></strong> <span class="activity-tag tag-nature">Nature</span> — One of Tokyo's most tranquil strolling gardens, just steps from the temple. Check closing time (usually 5pm) and enter before dusk</li>
+          <li class="transit-note">🚶 15-min walk north back to Kabutocho</li>
+          <li><strong>Kabutocho izakaya dinner</strong> <span class="activity-tag tag-food">Food</span> — The neighborhood is full of old-school salary-man bars; try the salted grilled fish at a counter spot</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/20 Fri -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">20</div>
+      <div class="day-info">
+        <div class="day-name">Friday</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Yanaka</strong> — From Kayabacho station, take Hibiya line toward Ueno (8 min, 4 stops) then JR Yamanote 1 stop to Nippori. Total ~25 min</li>
+          <li class="transit-note">🚶 Enter Yanaka Cemetery from the Nippori (north) end — start high, walk downhill south</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3087.html" target="_blank" rel="noopener" class="activity-link">Yanaka Cemetery at dusk</a></strong> <span class="activity-tag tag-nature">Nature</span> — One of Tokyo's best early cherry blossom spots; rows of old trees bloom in late March among ancient gravestones 🌸</li>
+          <li class="transit-note">🚶 10-min walk south downhill through the Yanaka neighborhood lanes</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3044.html" target="_blank" rel="noopener" class="activity-link">Yanaka Ginza shopping street</a></strong> <span class="activity-tag tag-food">Food</span> — Old shitamachi Tokyo preserved; buy mochi, pickles, and traditional snacks from family-run shops at the valley end of the cemetery walk</li>
+          <li class="transit-note">🚶 10-min walk east along the hillside path</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3065.html" target="_blank" rel="noopener" class="activity-link">Nezu Shrine</a></strong> <span class="activity-tag tag-temple">Temple</span> — Vermilion torii gates wind through a hillside garden; lesser-known and magical at golden hour</li>
+          <li class="transit-note">🚇 Nezu station (Chiyoda line) → Otemachi → 5-min walk to Kabutocho. Total ~20 min home</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/21 Sat -->
+  <div class="day-card weekend">
+    <div class="day-header">
+      <div class="day-date">21</div>
+      <div class="day-info">
+        <div class="day-name">Saturday</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-weekend">Full Day 🌸</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-morning">Morning</div>
+        <ul class="activity-list">
+          <li><strong><a href="https://www.japan-guide.com/e/e3001.html" target="_blank" rel="noopener" class="activity-link">Senso-ji Temple, Asakusa</a></strong> <span class="activity-tag tag-temple">Temple</span> — 25-min riverside walk north from Kabutocho, or take Toei Asakusa line 2 stops. Go early (7–9am) to beat crowds — the Nakamise arcade opens for souvenir browsing</li>
+          <li class="transit-note">🚶 3-min walk east along the river</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3012.html" target="_blank" rel="noopener" class="activity-link">Sumida Park</a></strong> <span class="activity-tag tag-nature">Nature</span> — Right beside Senso-ji; one of Tokyo's top cherry blossom spots 🌸 — linger and have a morning picnic under the trees</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-afternoon">Afternoon</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚶 20-min walk west, or take the Ginza line 1 stop from Asakusa → Ueno</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3019.html" target="_blank" rel="noopener" class="activity-link">Ueno Park</a></strong> <span class="activity-tag tag-nature">Nature</span> — The most famous hanami park in Tokyo 🌸 — buy a picnic from Ameyoko market stalls and grab a blanket spot</li>
+          <li class="transit-note">🚶 10-min walk north inside the park</li>
+          <li><strong><a href="https://www.tnm.jp/?lang=en" target="_blank" rel="noopener" class="activity-link">Tokyo National Museum</a></strong> <span class="activity-tag tag-temple">History</span> — The world's largest collection of Japanese art and artifacts; allow 2 hours</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚶 15-min walk south back through the park</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3028.html" target="_blank" rel="noopener" class="activity-link">Ameyoko Market for street food</a></strong> <span class="activity-tag tag-food">Food</span> — Lively open-air market under the train tracks; grilled skewers, ramen, seafood bowls</li>
+          <li class="transit-note">🚶 2-min walk into the park</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3019.html" target="_blank" rel="noopener" class="activity-link">Ueno night walk under the lanterns</a></strong> <span class="activity-tag tag-nature">Nature</span> — Ueno Park lit by hundreds of paper lanterns during sakura season 🌸 — purely magical at night</li>
+          <li class="transit-note">🚇 Ueno station → Hibiya or Ginza line → Kayabacho → 5-min walk to hotel (~15 min total)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/22 Sun -->
+  <div class="day-card weekend">
+    <div class="day-header">
+      <div class="day-date">22</div>
+      <div class="day-info">
+        <div class="day-name">Sunday · Move to Grand Hyatt</div>
+        <div class="day-hotel">Grand Hyatt Tokyo, Roppongi</div>
+      </div>
+      <div class="day-badge badge-weekend">Full Day 🌸</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-morning">Morning</div>
+        <ul class="activity-list">
+          <li><strong>Travel to Meiji Shrine</strong> — Take Hibiya line from Kayabacho → Omotesando (7 stops, ~15 min), then walk 15 min northwest through Yoyogi Park to the shrine entrance. Or a direct taxi (~35 min)</li>
+          <li class="transit-note">🚶 From Omotesando station: 15-min walk northwest into the forest</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3002.html" target="_blank" rel="noopener" class="activity-link">Meiji Jingu Shrine</a></strong> <span class="activity-tag tag-temple">Temple</span> <span class="activity-tag tag-nature">Nature</span> — Serene forested shrine path through 100,000 trees; one of Tokyo's most peaceful places. Arrive before 9am for solitude</li>
+          <li class="transit-note">🚶 3-min walk southeast out of the shrine into the park</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3034b.html" target="_blank" rel="noopener" class="activity-link">Yoyogi Park hanami picnic</a></strong> <span class="activity-tag tag-nature">Nature</span> — Adjacent to Meiji Shrine; sprawling park beloved for cherry blossom picnics 🌸</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-afternoon">Afternoon</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚶 15-min walk southeast through the park, exit near Harajuku station</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3006.html" target="_blank" rel="noopener" class="activity-link">Harajuku &amp; Omotesando</a></strong> <span class="activity-tag tag-food">Food</span> — Stroll Takeshita St for crepes and quirky snacks, then shift to Omotesando's elegant boulevard for coffee</li>
+          <li class="transit-note">🚇 Chiyoda line from Meiji-jingumae → Nogizaka (3 stops, 8 min) → 10-min walk to Grand Hyatt. Or taxi from Omotesando (~15 min)</li>
+          <li><strong>Check in to Grand Hyatt Roppongi</strong> — Drop your bags; you are now perfectly placed for the rest of the Tokyo stay</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚶 5-min walk east from the hotel</li>
+          <li><strong><a href="https://www.roppongihills.com/en/" target="_blank" rel="noopener" class="activity-link">Roppongi Hills &amp; Tokyo City View</a></strong> <span class="activity-tag tag-nature">Nature</span> — Observation deck with sweeping sakura-season panoramas over the city</li>
+          <li class="transit-note">🚶 8-min walk south</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3008.html" target="_blank" rel="noopener" class="activity-link">Dinner in Nishi-Azabu</a></strong> <span class="activity-tag tag-food">Food</span> — One of Tokyo's finest quiet dining neighborhoods; excellent yakitori and kappo restaurants</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/23 Mon -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">23</div>
+      <div class="day-info">
+        <div class="day-name">Monday</div>
+        <div class="day-hotel">Grand Hyatt Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head toward Shiba Park</strong> — 12-min walk south/southwest from Grand Hyatt along Sakurada-dori</li>
+          <li class="transit-note">🚶 Enter Zojo-ji from the Sangedatsumon gate</li>
+          <li><strong><a href="https://www.zojoji.or.jp/en/" target="_blank" rel="noopener" class="activity-link">Zojo-ji Temple forecourt</a></strong> <span class="activity-tag tag-temple">Temple</span> — Ancient temple dramatically framed by the glowing Tokyo Tower behind it; iconic photo spot at dusk</li>
+          <li class="transit-note">🚶 2-min walk — the tower is literally behind the temple</li>
+          <li><strong><a href="https://www.tokyotower.co.jp/en/" target="_blank" rel="noopener" class="activity-link">Tokyo Tower at night</a></strong> <span class="activity-tag tag-nature">Nature</span> — Lit in orange and white, spectacular after dark with 360° city views from the Main Deck</li>
+          <li class="transit-note">🚶 15-min walk downhill west toward the valley, or 3 min on the Nanboku line to Azabujuban station</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e2042.html" target="_blank" rel="noopener" class="activity-link">Ramen dinner in Azabujuban</a></strong> <span class="activity-tag tag-food">Food</span> — This charming low-rise neighborhood has some of Tokyo's finest old-school ramen shops</li>
+          <li class="transit-note">🚶 20-min walk north back to hotel, or taxi (~10 min)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/24 Tue -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">24</div>
+      <div class="day-info">
+        <div class="day-name">Tuesday</div>
+        <div class="day-hotel">Grand Hyatt Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Shibuya</strong> — 15-min walk west from Grand Hyatt, or take the Hibiya line from Roppongi → Naka-Meguro (3 stops, 8 min) then a 10-min walk</li>
+          <li class="transit-note">🚶 Walk to the famous scramble crossing — Scramble Square tower is right above the intersection</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3007.html" target="_blank" rel="noopener" class="activity-link">Shibuya Crossing at rush hour</a></strong> — The world's busiest pedestrian crossing; best experienced first from street level, then from above</li>
+          <li class="transit-note">🏢 Take the escalators inside Scramble Square to the top floor</li>
+          <li><strong><a href="https://www.shibuya-sky.com/en/" target="_blank" rel="noopener" class="activity-link">Shibuya Sky Observation Deck</a></strong> <span class="activity-tag tag-nature">Nature</span> — Rooftop open-air deck with dazzling 360° city views at sunset and after dark (book ahead)</li>
+          <li class="transit-note">🚶 Walk north from Shibuya station along the train tracks (~15 min) — a lovely tree-lined path</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3029.html" target="_blank" rel="noopener" class="activity-link">Dinner in Daikanyama</a></strong> <span class="activity-tag tag-food">Food</span> — Leafy, chic neighborhood; excellent farm-to-table Japanese restaurants and cafés</li>
+          <li class="transit-note">🚇 Daikanyama station (Tokyu Toyoko line) → Naka-Meguro → Roppongi direction taxi, or walk 25 min back to hotel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/25 Wed -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">25</div>
+      <div class="day-info">
+        <div class="day-name">Wednesday</div>
+        <div class="day-hotel">Grand Hyatt Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Shinjuku</strong> — Take the Toei Oedo line from Roppongi → Shinjuku-nishiguchi (4 stops, ~12 min). Arrive at the west exit directly by Omoide Yokocho</li>
+          <li class="transit-note">🚶 Exit toward the west side of Shinjuku station</li>
+          <li><strong><a href="https://www.shinjuku-omoide.com/" target="_blank" rel="noopener" class="activity-link">Omoide Yokocho (Memory Lane)</a></strong> <span class="activity-tag tag-food">Food</span> — Smoky yakitori stalls crammed into narrow alleyways just outside the west exit; have dinner here first</li>
+          <li class="transit-note">🚶 10-min walk through the station underpass to the east side and into the backstreets behind Kabukicho</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3007.html" target="_blank" rel="noopener" class="activity-link">Shinjuku Golden Gai</a></strong> <span class="activity-tag tag-food">Food</span> — A labyrinth of 200+ tiny atmospheric bars from a bygone era; pick one that calls to you and order whatever they recommend</li>
+          <li class="transit-note">🚇 Back to Roppongi: Oedo line from Shinjuku-nishiguchi (reverse trip, 12 min)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/26 Thu -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">26</div>
+      <div class="day-info">
+        <div class="day-name">Thursday</div>
+        <div class="day-hotel">Grand Hyatt Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Nakameguro</strong> — Take the Hibiya line from Roppongi → Naka-Meguro (3 stops, 8 min), or taxi directly (~12 min)</li>
+          <li class="transit-note">🚶 Walk down to the canal from the station — 3 min</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3030.html" target="_blank" rel="noopener" class="activity-link">Nakameguro Canal evening walk</a></strong> <span class="activity-tag tag-nature">Nature</span> — THE premier cherry blossom experience in Tokyo 🌸 — canal banks lined with sakura illuminated by lanterns. Walk east toward Daikanyama end and back</li>
+          <li class="transit-note">🍽️ Stay along the canal for dinner — restaurants are scattered along both banks</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3030.html" target="_blank" rel="noopener" class="activity-link">Dinner along the canal</a></strong> <span class="activity-tag tag-food">Food</span> — Excellent pasta, izakayas, and upscale Japanese restaurants all along the waterway</li>
+          <li class="transit-note">🚇 Naka-Meguro station → Hibiya line back to Roppongi (8 min)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/27 Fri -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">27</div>
+      <div class="day-info">
+        <div class="day-name">Friday · Last Night in Roppongi</div>
+        <div class="day-hotel">Grand Hyatt Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Splurge dinner in Roppongi</strong> <span class="activity-tag tag-food">Food</span> — Consider a tasting menu at one of the area's Michelin-starred restaurants near the hotel; a fitting send-off from central Tokyo</li>
+          <li class="transit-note">🚶 15-min walk southeast from the hotel</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3008.html" target="_blank" rel="noopener" class="activity-link">Hiroo neighborhood stroll</a></strong> — Quiet, international, elegant streets; lovely for a post-dinner digestif walk before an easy walk or taxi home</li>
+          <li><strong>Pack for Kanazawa tomorrow</strong> — Shinkansen is an early-ish departure from Tokyo Station</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KANAZAWA ==================== -->
+<section class="city-section" id="kanazawa">
+  <div class="city-header">
+    <div>
+      <div class="city-name">Kanazawa <span class="city-name-jp">金沢</span></div>
+      <div class="city-dates">Mar 28–29 · Hyatt Centric Kanazawa · Two Full Weekend Days</div>
+    </div>
+  </div>
+
+  <!-- 3/28 Sat -->
+  <div class="day-card weekend">
+    <div class="day-header">
+      <div class="day-date">28</div>
+      <div class="day-info">
+        <div class="day-name">Saturday · Arrive from Tokyo</div>
+        <div class="day-hotel">Hyatt Centric Kanazawa</div>
+      </div>
+      <div class="day-badge badge-weekend">Full Day 🌸</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-morning">Morning · Travel from Tokyo</div>
+        <ul class="activity-list">
+          <li><strong><a href="https://www.japan-guide.com/e/e4199.html" target="_blank" rel="noopener" class="activity-link">Shinkansen to Kanazawa</a></strong> — Hokuriku Shinkansen from Tokyo Station (~2.5 hrs); buy an ekiben station bento for the ride</li>
+          <li class="transit-note">🚉 Step off the train — your first Kanazawa stop is right at the exit</li>
+          <li><strong><a href="https://visitkanazawa.jp/en/spot/detail_50074.html" target="_blank" rel="noopener" class="activity-link">Tsuzumi-mon Gate at the station</a></strong> <span class="activity-tag tag-temple">History</span> — The iconic drum-shaped gate at the East Exit, modeled after tsuzumi hand drums used in Noh theater — a striking introduction to the city's arts heritage</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-afternoon">Afternoon — One long walking loop</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚶 10-min walk east from the station, following signs to the market</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4207.html" target="_blank" rel="noopener" class="activity-link">Omicho Market for lunch</a></strong> <span class="activity-tag tag-food">Food</span> — Kanazawa's legendary covered market; order a kaisendon (fresh sashimi over rice) — the coastal waters here are famous for yellowtail, uni, and snow crab</li>
+          <li class="transit-note">🚶 8-min walk east along Hyakumangoku-dori</li>
+          <li><strong><a href="https://visitkanazawa.jp/en/spot/detail_50021.html" target="_blank" rel="noopener" class="activity-link">Oyama Shrine</a></strong> <span class="activity-tag tag-temple">Temple</span> — Unique gate designed by a Dutch architect blending Japanese, Chinese, and European styles — the stained-glass top once served as a lighthouse for Sea of Japan ships. A beautiful koi garden inside</li>
+          <li class="transit-note">🚶 5-min walk through the shrine grounds, cross the Nezumita-mon bridge directly into the castle grounds</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4201.html" target="_blank" rel="noopener" class="activity-link">Kanazawa Castle Park</a></strong> <span class="activity-tag tag-temple">History</span> — The restored white castle walls and watchtowers glow in the afternoon light. On Saturday evenings, the Gyokusen-inmaru Garden inside the park has a light-and-sound show</li>
+          <li class="transit-note">🚶 2-min walk — Kenroku-en is directly across the street from the Ishikawa-mon gate</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4200.html" target="_blank" rel="noopener" class="activity-link">Kenroku-en Garden</a></strong> <span class="activity-tag tag-nature">Nature</span> — One of Japan's three most beautiful gardens. Spring brings early cherry blossoms among the ponds and teahouses 🌸 — admission is free during peak bloom</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚶 15-min walk northeast, or 5-min taxi — Higashi Chaya is the neighborhood on the hill across the Asano River</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4204.html" target="_blank" rel="noopener" class="activity-link">Higashi Chaya Geisha District</a></strong> <span class="activity-tag tag-temple">History</span> — The best-preserved geisha quarter outside Kyoto; wooden ochaya teahouses line the lantern-lit streets at dusk — stop for matcha and gold-leaf sweets at one of the tea shops</li>
+          <li class="transit-note">🍦 Vendors are on the main street and near the entrance</li>
+          <li><strong>Kanazawa gold-leaf ice cream</strong> <span class="activity-tag tag-food">Food</span> — A Kanazawa specialty: soft-serve wrapped in a sheet of edible gold leaf; available from vendors along the main street</li>
+          <li class="transit-note">🚶 20-min walk or taxi back to hotel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/29 Sun -->
+  <div class="day-card weekend">
+    <div class="day-header">
+      <div class="day-date">29</div>
+      <div class="day-info">
+        <div class="day-name">Sunday · Depart to Yokohama</div>
+        <div class="day-hotel">Hyatt Centric Kanazawa → Hyatt Regency Yokohama</div>
+      </div>
+      <div class="day-badge badge-weekend">Full Day</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-morning">Morning</div>
+        <ul class="activity-list">
+          <li><strong>Head southwest from hotel</strong> — 20-min walk, or take the Kanazawa Loop Bus (Kenrokuen-Korinbo-direction) to the Korinbo stop, then 10-min walk</li>
+          <li class="transit-note">🚶 Follow the Sai River south — the area feels like old Edo Japan</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4203.html" target="_blank" rel="noopener" class="activity-link">Myoryuji — The Ninja Temple</a></strong> <span class="activity-tag tag-temple">Temple</span> — Labyrinthine temple with hidden rooms, trapdoors, and secret escape routes. Book a guided tour in advance (essential — no walk-ins allowed)</li>
+          <li class="transit-note">🚶 5-min walk through the quiet temple district</li>
+          <li><strong><a href="https://visitkanazawa.jp/en/" target="_blank" rel="noopener" class="activity-link">Nomachi neighborhood</a></strong> — Quiet historic district of temples and shrines; wandering these lanes feels like stepping into 1700s Japan</li>
+          <li class="transit-note">🚶 10-min walk northeast along the Sai River toward the castle area</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4206.html" target="_blank" rel="noopener" class="activity-link">Nagamachi Samurai District</a></strong> <span class="activity-tag tag-temple">History</span> — One of Japan's best-preserved samurai districts; earthen walls, narrow canals and cobblestone lanes unchanged since the Edo period</li>
+          <li class="transit-note">🚶 3-min walk inside the district</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4206.html" target="_blank" rel="noopener" class="activity-link">Nomura-ke Samurai Residence</a></strong> — A beautifully preserved mansion inside Nagamachi with a garden and upstairs tearoom (¥550 entry)</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-afternoon">Afternoon · Then depart</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚶 15-min walk east — the museum is a circular white building right beside Kenroku-en</li>
+          <li><strong><a href="https://www.kanazawa21.jp/en/" target="_blank" rel="noopener" class="activity-link">21st Century Museum of Contemporary Art</a></strong> — Bold circular museum with interactive permanent installations; the swimming pool illusion room is unmissable (free outer grounds; ¥1,000 for inner galleries)</li>
+          <li class="transit-note">🚌 Loop Bus or 20-min walk west back to Kanazawa Station</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4199.html" target="_blank" rel="noopener" class="activity-link">Shinkansen to Yokohama</a></strong> — Hokuriku Shinkansen to Tokyo (~2.5 hrs), then Tokaido line to Yokohama (~30 min). Total ~3 hrs</li>
+          <li class="transit-note">🍜 On arrival at Yokohama, the hotel is ~5-min taxi or 15-min walk from Yokohama Station</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4302.html" target="_blank" rel="noopener" class="activity-link">Dinner in Yokohama Chinatown</a></strong> <span class="activity-tag tag-food">Food</span> — Japan's largest Chinatown (500+ restaurants), a short walk from the hotel; perfect for a casual first-night dinner</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== YOKOHAMA ==================== -->
+<section class="city-section" id="yokohama">
+  <div class="city-header">
+    <div>
+      <div class="city-name">Yokohama <span class="city-name-jp">横浜</span></div>
+      <div class="city-dates">Mar 30–Apr 4 · Hyatt Regency Yokohama</div>
+    </div>
+  </div>
+
+  <!-- 3/30 Mon -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">30</div>
+      <div class="day-info">
+        <div class="day-name">Monday</div>
+        <div class="day-hotel">Hyatt Regency Yokohama</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to the waterfront</strong> — 15-min walk southeast from the hotel through Kannai toward the bay</li>
+          <li class="transit-note">🚶 Enter the park from the west (Yamashita side)</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4305.html" target="_blank" rel="noopener" class="activity-link">Yamashita Park waterfront</a></strong> <span class="activity-tag tag-nature">Nature</span> — Breezy harbor-front park with views of the Bay Bridge and the historic Hikawa Maru ship; beautiful at night with reflections on the water</li>
+          <li class="transit-note">🚶 5-min walk west along the waterfront</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4303.html" target="_blank" rel="noopener" class="activity-link">Motomachi shopping street</a></strong> — Yokohama's charming European-influenced shopping lane; boutiques, bakeries, and old-world atmosphere. Good spot for a light dinner or dessert</li>
+          <li class="transit-note">🚶 15-min walk back to hotel via Kannai</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3/31 Tue -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">31</div>
+      <div class="day-info">
+        <div class="day-name">Tuesday</div>
+        <div class="day-hotel">Hyatt Regency Yokohama</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Minato Mirai</strong> — 20-min walk northwest from the hotel, or take the Minatomirai line 2 stops from Bashamichi → Minato Mirai station</li>
+          <li class="transit-note">🚶 Head toward the water — the illuminated skyline is straight ahead</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4301.html" target="_blank" rel="noopener" class="activity-link">Minato Mirai waterfront</a></strong> <span class="activity-tag tag-nature">Nature</span> — Yokohama's stunning futuristic harbor; glittering at night with the Landmark Tower, ferris wheel, and bay reflections</li>
+          <li class="transit-note">🚶 5-min walk along the waterfront promenade</li>
+          <li><strong><a href="https://cosmoworld.jp/en/" target="_blank" rel="noopener" class="activity-link">Cosmo World amusement park</a></strong> — The iconic lit ferris wheel right on the waterfront; a fun backdrop for evening photos</li>
+          <li class="transit-note">🚶 10-min walk northeast along the dockside promenade</li>
+          <li><strong><a href="https://www.yokohama-akarenga.jp/en/" target="_blank" rel="noopener" class="activity-link">Dinner at Yokohama Red Brick Warehouse</a></strong> <span class="activity-tag tag-food">Food</span> — Beautiful 1913 port warehouses converted into restaurants and bars; excellent seafood and harbor views</li>
+          <li class="transit-note">🚇 Minatomirai line from Bashamichi → Yokohama Station area, or taxi back to hotel (~15 min)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/1 Wed -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">Apr 1</div>
+      <div class="day-info">
+        <div class="day-name">Wednesday</div>
+        <div class="day-hotel">Hyatt Regency Yokohama</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head toward Yamate</strong> — Walk southeast from the hotel toward the Motomachi area (~15 min), then climb the hill path up to the bluff</li>
+          <li class="transit-note">🚶 Climb the steps at Motomachi → Yamate; the mansions appear as the path levels out</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4304.html" target="_blank" rel="noopener" class="activity-link">Yamate Bluff area</a></strong> <span class="activity-tag tag-nature">Nature</span> — Atmospheric hilltop with Victorian-era Western mansions, old churches, and a rose garden with sea views; a reminder of Yokohama's cosmopolitan history</li>
+          <li class="transit-note">🚶 15-min walk south along the bluff path, or take bus 21 toward Honmoku</li>
+          <li><strong>Honmoku area for dinner</strong> <span class="activity-tag tag-food">Food</span> — Yokohama's old foreign settlement district; excellent mix of Japanese and international flavors reflecting the port city's trading past</li>
+          <li class="transit-note">🚌 Bus back toward Kannai or taxi to hotel (~20 min)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/2 Thu -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">Apr 2</div>
+      <div class="day-info">
+        <div class="day-name">Thursday</div>
+        <div class="day-hotel">Hyatt Regency Yokohama</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Sakuragicho</strong> — 20-min walk northwest from hotel, or Minatomirai line from Bashamichi → Sakuragicho (2 stops)</li>
+          <li class="transit-note">🚶 Walk north to the old railway line — signs point to the Kishamichi Promenade</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4301.html" target="_blank" rel="noopener" class="activity-link">Kishamichi Promenade</a></strong> <span class="activity-tag tag-nature">Nature</span> — The elevated walkway along the old railway track with waterfront views and cherry trees 🌸 — one of Yokohama's loveliest evening strolls</li>
+          <li class="transit-note">🚇 Minatomirai line from Sakuragicho → Motomachi-Chukagai (1 stop, 3 min); Chinatown is right at the exit</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4302.html" target="_blank" rel="noopener" class="activity-link">Chinatown night market</a></strong> <span class="activity-tag tag-food">Food</span> — Yokohama Chinatown at night is lit up and buzzing; try xiao long bao (soup dumplings) or a proper Cantonese feast at one of the larger restaurants</li>
+          <li class="transit-note">🚶 15-min walk west back to hotel through Kannai</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/3 Fri -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">Apr 3</div>
+      <div class="day-info">
+        <div class="day-name">Friday</div>
+        <div class="day-hotel">Hyatt Regency Yokohama</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Noge</strong> — 15-min walk west from the hotel, just across the elevated highway from Sakuragicho. Or a short taxi from the hotel</li>
+          <li class="transit-note">🎷 The jazz bars start filling up around 7–8pm</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e4316.html" target="_blank" rel="noopener" class="activity-link">Noge neighborhood</a></strong> <span class="activity-tag tag-food">Food</span> — Yokohama's beloved jazz-bar and izakaya district; a maze of tiny bars playing live jazz. Very local, very special — let yourself wander in</li>
+          <li class="transit-note">🍜 Ramen shops are concentrated around the covered shopping arcade</li>
+          <li><strong>Farewell dinner in Yokohama</strong> <span class="activity-tag tag-food">Food</span> — Try Yokohama-style ie-kei ramen (thick rich tonkotsu-soy broth) at one of the originals in or around Noge</li>
+          <li class="transit-note">🚶 15-min walk back east to hotel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/4 Sat -->
+  <div class="day-card weekend">
+    <div class="day-header">
+      <div class="day-date">Apr 4</div>
+      <div class="day-info">
+        <div class="day-name">Saturday · Return to Tokyo</div>
+        <div class="day-hotel">Hyatt Regency Yokohama → Caption by Hyatt Kabutocho</div>
+      </div>
+      <div class="day-badge badge-weekend">Full Day 🌸</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-morning">Morning</div>
+        <ul class="activity-list">
+          <li><strong>Check out and head to Sankeien</strong> — Store luggage at hotel; take bus 8 from Yokohama Station (bus terminal, 15-min walk or taxi to the station) toward Honmoku Sankeien-mae (~20 min). Or a direct taxi from the hotel (~25 min)</li>
+          <li class="transit-note">🌸 Arrive early — mornings are serene before tour groups arrive</li>
+          <li><strong><a href="https://www.sankeien.or.jp/en/" target="_blank" rel="noopener" class="activity-link">Sankeien Garden</a></strong> <span class="activity-tag tag-nature">Nature</span> <span class="activity-tag tag-temple">History</span> — Yokohama's finest garden, with transplanted historic buildings (pagodas, teahouses, old farmhouses) among cherry blossoms 🌸 — one of the trip's highlights</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-afternoon">Afternoon · Then depart to Tokyo</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚌 Bus or taxi from Sankeien back north toward Minatomirai (~30-40 min). Or taxi directly to the museum (~25 min)</li>
+          <li><strong><a href="https://www.cupnoodles-museum.jp/en/yokohama/" target="_blank" rel="noopener" class="activity-link">Cup Noodles Museum</a></strong> <span class="activity-tag tag-food">Food</span> — Design your own custom Cup Noodles in the interactive factory; a delightful uniquely Japanese experience in Minato Mirai</li>
+          <li class="transit-note">🚇 From Minatomirai station → Yokohama Station (Minatomirai line, 4 min) → JR Tokaido line to Tokyo Station (~28 min) → Keiyo line or Hibiya line to Kabutocho area</li>
+          <li><strong>Check in to Caption by Hyatt Kabutocho</strong> — Back to your original neighborhood for the final week</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚶 Nihonbashi is 5-min walk from Kabutocho</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3034.html" target="_blank" rel="noopener" class="activity-link">Dinner in Nihonbashi</a></strong> <span class="activity-tag tag-food">Food</span> — Tokyo's old merchant heart; excellent tempura and kaiseki restaurants in the historic buildings</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TOKYO II ==================== -->
+<section class="city-section" id="tokyo2">
+  <div class="city-header">
+    <div>
+      <div class="city-name">Tokyo <span class="city-name-jp">東京</span> II</div>
+      <div class="city-dates">Apr 5–11 · Caption by Hyatt Kabutocho Tokyo · Final Week</div>
+    </div>
+  </div>
+
+  <!-- 4/5 Sun -->
+  <div class="day-card weekend">
+    <div class="day-header">
+      <div class="day-date">Apr 5</div>
+      <div class="day-info">
+        <div class="day-name">Sunday</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-weekend">Full Day 🌸</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-morning">Morning</div>
+        <ul class="activity-list">
+          <li><strong>Head to Hamarikyu</strong> — 10-min walk south from the hotel along the canal</li>
+          <li class="transit-note">🌿 Enter the garden from the north gate near the heliport</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3031.html" target="_blank" rel="noopener" class="activity-link">Hamarikyu Gardens</a></strong> <span class="activity-tag tag-nature">Nature</span> — A stunning tidal garden right in Tokyo's bay. Late cherry blossoms among rapeseed flowers 🌸</li>
+          <li class="transit-note">🍵 The traditional teahouse is inside the garden, beside the central pond</li>
+          <li><strong>Tea ceremony at the teahouse inside Hamarikyu</strong> — garden-fresh matcha served on the water's edge</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-afternoon">Afternoon</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚶 15-min walk northwest through Shiodome area</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3021.html" target="_blank" rel="noopener" class="activity-link">Tsukiji Outer Market</a></strong> <span class="activity-tag tag-food">Food</span> — Proper sushi lunch at a counter restaurant; the outer market still thrives with excellent vendors</li>
+          <li class="transit-note">🚶 15-min walk north along Harumi-dori</li>
+          <li><strong><a href="https://www.ito-ya.co.jp/en/" target="_blank" rel="noopener" class="activity-link">Ginza art galleries and Itoya</a></strong> — World's finest stationery store; Ginza is also a calm Sunday afternoon walking destination. Browse the galleries on Chuo-dori</li>
+        </ul>
+      </div>
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li class="transit-note">🚇 Ginza line from Ginza → Asakusa (5 stops, ~10 min); exit toward the Skytree direction</li>
+          <li><strong><a href="https://www.tokyo-skytree.jp/en/" target="_blank" rel="noopener" class="activity-link">Tokyo Skytree at sunset</a></strong> <span class="activity-tag tag-nature">Nature</span> — The world's second-tallest structure; extraordinary views from 450m. Book the Tembo Gallery deck in advance — sunset timing is ideal</li>
+          <li class="transit-note">🚶 5-min walk west through the Solamachi mall into central Asakusa</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3001.html" target="_blank" rel="noopener" class="activity-link">Asakusa dinner</a></strong> <span class="activity-tag tag-food">Food</span> — Beneath the Skytree; eat at one of the old-school tempura restaurants the neighborhood is famous for</li>
+          <li class="transit-note">🚶 25-min walk south along the Sumida River back to hotel, or take the subway</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/6 Mon -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">Apr 6</div>
+      <div class="day-info">
+        <div class="day-name">Monday</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head east toward Fukagawa</strong> — 15-min walk southeast from the hotel, or 1 stop on the Toei Oedo line to Monzen-Nakacho</li>
+          <li class="transit-note">🚶 The shrine is at the edge of a lively old shitamachi neighborhood</li>
+          <li><strong><a href="https://www.tomiokahachimangu.or.jp/" target="_blank" rel="noopener" class="activity-link">Tomioka Hachimangu Shrine</a></strong> <span class="activity-tag tag-temple">Temple</span> — Grand Shinto shrine with evening lanterns lit; surrounded by the wonderful low-rise Fukagawa shitamachi feel</li>
+          <li class="transit-note">🚶 10-min walk west along the Kyusho River</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3062.html" target="_blank" rel="noopener" class="activity-link">Kiyosumi-Shirakawa coffee district</a></strong> <span class="activity-tag tag-food">Food</span> — Tokyo's craft coffee hub; many excellent roasters open evenings. Have a pour-over and a light bite</li>
+          <li class="transit-note">🚶 10-min walk northeast back to Kabutocho</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/7 Tue -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">Apr 7</div>
+      <div class="day-info">
+        <div class="day-name">Tuesday</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Jimbocho</strong> — Take the Tokyo Metro Hanzomon line from Mitsukoshimae station (5-min walk from hotel) → Jimbocho (3 stops, ~8 min)</li>
+          <li class="transit-note">📚 The used-book district fills the streets around the station exit</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3043.html" target="_blank" rel="noopener" class="activity-link">Jimbocho book &amp; curry district</a></strong> <span class="activity-tag tag-food">Food</span> — Tokyo's legendary used-book quarter; have curry dinner here (the curry-and-books combination is a genuine Tokyo quirk)</li>
+          <li class="transit-note">🚶 10-min walk north uphill to the moat</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3026.html" target="_blank" rel="noopener" class="activity-link">Chidorigafuchi moat rowboats</a></strong> <span class="activity-tag tag-nature">Nature</span> — The moat is lined with weeping cherry trees 🌸; rowboats beneath the petals at dusk is one of Tokyo's most iconic sakura experiences (rental boats available on the east side)</li>
+          <li class="transit-note">🚶 5-min walk east from the moat</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3026.html" target="_blank" rel="noopener" class="activity-link">Yasukuni Shrine</a></strong> <span class="activity-tag tag-temple">Temple</span> — Large shrine beside the moat; the grounds are floodlit at night and strikingly quiet</li>
+          <li class="transit-note">🚇 Kudanshita station → Hanzomon line → Mitsukoshimae → 5-min walk to hotel (~10 min total)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/8 Wed -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">Apr 8</div>
+      <div class="day-info">
+        <div class="day-name">Wednesday</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Kagurazaka</strong> — Take the Toei Oedo line from Shin-Kiba direction or Hanzomon line from Mitsukoshimae → Iidabashi area (~25 min). Or JR from Tokyo Station to Iidabashi (~15 min)</li>
+          <li class="transit-note">🚶 From Iidabashi station, walk up the main Kagurazaka slope</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3036.html" target="_blank" rel="noopener" class="activity-link">Kagurazaka neighborhood</a></strong> — Tokyo's "Little France"; cobblestone alleys, hidden shrines, and excellent bistros. Wander the yokocho side streets off the main slope</li>
+          <li class="transit-note">🚶 3-min walk into the hidden alleys behind the main street</li>
+          <li><strong><a href="https://kagurazaka-bishamonten.com/" target="_blank" rel="noopener" class="activity-link">Zenkoku-ji Temple (Bishamonten)</a></strong> <span class="activity-tag tag-temple">Temple</span> — Ancient temple embedded in Kagurazaka's back alleys; the narrow stone approach feels genuinely ancient</li>
+          <li class="transit-note">🍽️ Restaurants line both the main street and the side alleys</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3036.html" target="_blank" rel="noopener" class="activity-link">Dinner in Kagurazaka</a></strong> <span class="activity-tag tag-food">Food</span> — A great night to try kaiseki or high-quality French-Japanese fusion</li>
+          <li class="transit-note">🚇 Iidabashi station → Hanzomon line → Mitsukoshimae → 5-min walk home (~15 min total)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/9 Thu -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">Apr 9</div>
+      <div class="day-info">
+        <div class="day-name">Thursday</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Weeknight</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening</div>
+        <ul class="activity-list">
+          <li><strong>Head to Ginza / Nihonbashi</strong> — 15-min walk west from the hotel, or a quick taxi</li>
+          <li class="transit-note">🍣 Omakase counters are concentrated in the back streets of Ginza and around Nihonbashi</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e2036.html" target="_blank" rel="noopener" class="activity-link">Omakase sushi dinner</a></strong> <span class="activity-tag tag-food">Food</span> — Reserve a counter seat at an omakase restaurant for a penultimate-night splurge; Tokyo has the highest concentration of sushi masters in the world</li>
+          <li class="transit-note">🚶 A post-dinner stroll down Ginza's main avenue is a perfect palate cleanser</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3005.html" target="_blank" rel="noopener" class="activity-link">Ginza night walk</a></strong> — After dinner, Ginza's boulevard is beautiful lit up at night; window shop the flagships and find a whisky bar for a nightcap</li>
+          <li class="transit-note">🚶 20-min walk northeast back to Kabutocho, or a short taxi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/10 Fri -->
+  <div class="day-card weeknight">
+    <div class="day-header">
+      <div class="day-date">Apr 10</div>
+      <div class="day-info">
+        <div class="day-name">Friday · Last Full Day</div>
+        <div class="day-hotel">Caption by Hyatt Kabutocho Tokyo</div>
+      </div>
+      <div class="day-badge badge-weeknight">Last Evening 🌸</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-evening">Evening — Make it Count 🌸</div>
+        <ul class="activity-list">
+          <li><strong>Walk north to the river</strong> — 15-min walk north from the hotel along the Sumida River, past Eitai Bridge</li>
+          <li class="transit-note">🌸 The sakura trees along the river will be near or at peak — one last walk under the petals</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3012.html" target="_blank" rel="noopener" class="activity-link">Sumida Park one last time</a></strong> <span class="activity-tag tag-nature">Nature</span> — Sit under the sakura trees at dusk for one final hanami moment; the Skytree glows in the background 🌸</li>
+          <li class="transit-note">🚶 5-min walk west into Asakusa</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3001.html" target="_blank" rel="noopener" class="activity-link">Final dinner in Asakusa</a></strong> <span class="activity-tag tag-food">Food</span> — Return to where it all began; try monjayaki (Tokyo's savory pancake) or a long slow kaiseki course</li>
+          <li class="transit-note">🚶 20-min walk south along the river back to Kabutocho</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e2010.html" target="_blank" rel="noopener" class="activity-link">Late sake bar in Kabutocho</a></strong> <span class="activity-tag tag-food">Food</span> — Find a natural sake bar in your home neighborhood for a proper farewell to Japan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4/11 Sat Departure -->
+  <div class="day-card departure">
+    <div class="day-header">
+      <div class="day-date">Apr 11</div>
+      <div class="day-info">
+        <div class="day-name">Saturday · Departure</div>
+        <div class="day-hotel">NRT → TPE → SEA · Departs 5:55pm</div>
+      </div>
+      <div class="day-badge badge-departure">Departure</div>
+    </div>
+        <div class="activities">
+      <div class="activity-block">
+        <div class="time-label time-morning">Morning — Free Time</div>
+        <ul class="activity-list">
+          <li><strong>Leisurely hotel breakfast</strong> <span class="activity-tag tag-food">Food</span> — No rush; depart 5:55pm from NRT, so aim to leave the hotel around 1:30–2pm</li>
+          <li class="transit-note">🚇 Hibiya line from Kayabacho → Tsukijishijo (2 stops, 5 min), or a quick taxi</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3021.html" target="_blank" rel="noopener" class="activity-link">Last Tsukiji run</a></strong> <span class="activity-tag tag-food">Food</span> — Pick up tamagoyaki, dried fish, or tsukemono pickles as edible souvenirs from the outer market</li>
+          <li class="transit-note">🚶 15-min walk northeast back toward the hotel and Nihonbashi</li>
+          <li><strong><a href="https://www.japan-guide.com/e/e3034.html" target="_blank" rel="noopener" class="activity-link">Final souvenir shopping — Nihonbashi Takashimaya</a></strong> — The basement food halls (depachika) are extraordinary for omiyage gifts</li>
+          <li class="transit-note">🚅 Walk 5 min to Tokyo Station → JR Narita Express (N'EX) direct to Narita Airport T1/T2 (~55 min). Or take the Keisei Skyliner from Ueno (~41 min). Allow 90 min travel + 2 hrs check-in</li>
+          <li><strong>Head to Narita</strong> — よい旅を — Safe travels!</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</section>
+</main>
+
+<footer>
+  🌸 Safe travels · よい旅を · SEA ↔ HND · March 18 – April 11, 2025
+</footer>
+
+<script>
+  // City navigation
+  function showCity(id) {
+    document.querySelectorAll('.city-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.closest('.city-btn').classList.add('active');
+    window.scrollTo({ top: document.querySelector('.city-nav').offsetTop - 10, behavior: 'smooth' });
+  }
+
+  // Falling petals
+  const petalsContainer = document.getElementById('petals');
+  const petalSymbols = ['🌸', '🌺', '✿', '❀'];
+  for (let i = 0; i < 18; i++) {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    petal.textContent = petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
+    petal.style.left = Math.random() * 100 + '%';
+    petal.style.animationDuration = (6 + Math.random() * 10) + 's';
+    petal.style.animationDelay = (Math.random() * 8) + 's';
+    petal.style.fontSize = (14 + Math.random() * 14) + 'px';
+    petalsContainer.appendChild(petal);
+  }
+</script>
+</body>
+</html>
