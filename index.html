@@ -268,6 +268,50 @@
     box-shadow: 0 6px 24px rgba(0,0,0,0.1);
   }
 
+  .day-card.collapsed:hover {
+    transform: translateY(-1px);
+  }
+
+  /* Collapsible */
+  .day-header {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .day-chevron {
+    font-size: 11px;
+    color: var(--ink-soft);
+    opacity: 0.35;
+    transition: transform 0.25s ease, opacity 0.2s;
+    flex-shrink: 0;
+    margin-left: 4px;
+  }
+
+  .day-card.collapsed .day-chevron {
+    transform: rotate(-90deg);
+    opacity: 0.25;
+  }
+
+  .day-header:hover .day-chevron {
+    opacity: 0.65;
+  }
+
+  .activities {
+    overflow: hidden;
+    max-height: 2000px;
+    transition: max-height 0.35s ease, padding 0.25s ease;
+  }
+
+  .day-card.collapsed .activities {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .day-card.collapsed .day-header {
+    border-bottom: none;
+  }
+
   .day-card.weekend { background: var(--weekend-bg); }
   .day-card.weeknight { background: var(--weeknight-bg); }
   .day-card.arrival { background: #f0faf4; }
@@ -1405,6 +1449,21 @@
 </footer>
 
 <script>
+  // Collapsible day cards
+  document.querySelectorAll('.day-card').forEach(card => {
+    const header = card.querySelector('.day-header');
+    if (!header) return;
+    // Add chevron
+    const chevron = document.createElement('span');
+    chevron.className = 'day-chevron';
+    chevron.textContent = '▾';
+    header.appendChild(chevron);
+    // Toggle on click
+    header.addEventListener('click', () => {
+      card.classList.toggle('collapsed');
+    });
+  });
+
   // City navigation
   function showCity(id) {
     document.querySelectorAll('.city-section').forEach(s => s.classList.remove('active'));
