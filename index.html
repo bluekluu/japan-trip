@@ -533,6 +533,110 @@
   .tip { font-size: 12px; }
   .tip strong { color: var(--sakura); }
 
+  /* FRIEND'S PICKS TAB */
+  .rec-divider {
+    margin: 28px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--indigo);
+  }
+  .rec-divider-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--ink);
+  }
+  .rec-area-card {
+    margin-bottom: 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    background: white;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .rec-area-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+  }
+  .rec-area-card.products-card { background: #f8f6ff; }
+  .rec-area-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    border-left: 4px solid var(--gold);
+    background: #fffdf7;
+    cursor: pointer;
+    user-select: none;
+  }
+  .rec-area-card.products-card .rec-area-header {
+    border-left-color: var(--indigo);
+    background: #f0f1f8;
+  }
+  .rec-area-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    flex: 1;
+  }
+  .rec-area-name-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    opacity: 0.45;
+    margin-left: 6px;
+  }
+  .rec-area-chevron {
+    font-size: 16px;
+    color: var(--ink-soft);
+    opacity: 0.4;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+  .rec-area-card.collapsed .rec-area-chevron { transform: rotate(-90deg); }
+  .rec-items {
+    padding: 10px 20px 14px;
+    max-height: 3000px;
+    transition: max-height 0.35s ease, padding 0.25s ease;
+    overflow: hidden;
+  }
+  .rec-area-card.collapsed .rec-items {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .rec-item {
+    padding: 8px 0 8px 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    position: relative;
+    border-bottom: 1px dashed rgba(0,0,0,0.06);
+  }
+  .rec-item:last-child { border-bottom: none; }
+  .rec-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.35;
+  }
+  .products-card .rec-item::before { background: var(--indigo); }
+  .rec-item strong { color: var(--ink); font-weight: 500; }
+  .rec-note {
+    font-size: 12px;
+    color: var(--ink-soft);
+    opacity: 0.75;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
   /* TRANSIT NOTES */
   .transit-note {
     list-style: none;
@@ -613,6 +717,7 @@
   <button class="city-btn" onclick="showCity('yokohama')">Yokohama<br><small>Mar 30–Apr 3</small></button>
   <button class="city-btn" onclick="showCity('kamakura')">Kamakura<br><small>Apr 4</small></button>
   <button class="city-btn" onclick="showCity('tokyo2')">Tokyo II<br><small>Apr 5–11</small></button>
+  <button class="city-btn" onclick="showCity('picks')">Friend's Picks<br><small>Extras</small></button>
 </nav>
 
 <main>
@@ -1417,6 +1522,313 @@
   </div>
 
 </section>
+<!-- ==================== FRIEND'S PICKS ==================== -->
+<section class="city-section" id="picks">
+  <div class="city-header">
+    <div>
+      <div class="city-name">Friend's Picks <span class="city-name-jp">おすすめ</span></div>
+      <div class="city-dates">Restaurants, sightseeing &amp; shopping tips not already in the itinerary · organized by area</div>
+    </div>
+  </div>
+
+  <!-- ── PART 1: RESTAURANTS & SIGHTSEEING ── -->
+  <div class="rec-divider"><div class="rec-divider-title">🍣 Restaurants &amp; Sightseeing</div></div>
+
+  <!-- ASAKUSA & UENO -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Asakusa &amp; Ueno <span class="rec-area-name-jp">浅草・上野</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Asakusa Culture Tourist Information Center</strong> <span class="activity-tag tag-nature">Sightseeing</span>
+        <span class="rec-note">Free rooftop viewing deck directly opposite Kaminarimon Gate — stunning aerial view of Senso-ji. Free entry. 2-18-9 Kaminarimon.</span></div>
+      <div class="rec-item"><strong>Funawa Nakamise</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Cremia soft serve in a langues de chat wafer cone — Asakusa Nakamise shopping street. Highly recommended across multiple sources.</span></div>
+      <div class="rec-item"><strong>Chacha Futatsume</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Matcha mont blanc ice cream cone near Senso-ji. Visually stunning; taste reviews are mixed.</span></div>
+      <div class="rec-item"><strong>Chaya Tabanenoshi</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Matcha crème brûlée crepe — Asakusa area.</span></div>
+      <div class="rec-item"><strong>Miura Misaki-ko Ueno (まぐろ問屋三浦三崎港)</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Conveyor sushi with oversized toppings — nakachi gunkan ¥110 for 2 pcs. 6-12-14 Ueno, 3 min from Ueno Station. ¥1,000–¥2,000. Hours: 10:30–23:00.</span></div>
+    </div>
+  </div>
+
+  <!-- NIHONBASHI / GINZA / TSUKIJI -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Nihonbashi · Ginza · Tsukiji <span class="rec-area-name-jp">日本橋・銀座・築地</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Yumaru Ramen (由丸)</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Tonkotsu ramen with unlimited noodle refills ~¥700 — only available 11am–12pm. 1-4-10 Nihonbashi Ningyocho, 1 min from Ningyocho Station.</span></div>
+      <div class="rec-item"><strong>Ginza Kagari</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Highly rated chicken broth ramen — 6-4-12 Ginza, Chuo City.</span></div>
+      <div class="rec-item"><strong>Tsukasa (天然本マグロ専門店)</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Bluefin tuna specialist at Tsukiji — negitoro don ¥2,000; 3-cut tuna bowl ¥3,000.</span></div>
+      <div class="rec-item"><strong>Gyudon Stall at Tsukiji Outer Market</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Beef bowl (gyudon) since 1947 — an unpretentious local favourite. One of the few non-touristy stalls worth visiting at Tsukiji.</span></div>
+      <div class="rec-item"><strong>Tsukiji Tuna Cutting Stand</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Watch fresh bluefin tuna cut in front of you and eat it on the spot. Walk the market and look for tuna cutting stands — go early morning.</span></div>
+    </div>
+  </div>
+
+  <!-- TOKYO STATION / MARUNOUCHI -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Tokyo Station · Marunouchi <span class="rec-area-name-jp">東京駅・丸の内</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Nemuro Hanamaru — KITTE Marunouchi</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Hokkaido sushi from ¥75/piece — 30+ items at ¥75; chutoro ¥240. KITTE 5F, 1 min from Tokyo Station. Hours: 11am–10pm daily. Arrive early — ~100 person queues at lunch.</span></div>
+      <div class="rec-item"><strong>Cha-no-wa</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Ranked #1 matcha latte in Tokyo by a reviewer who tried 49 cafés. Near Tokyo Station.</span></div>
+    </div>
+  </div>
+
+  <!-- SHIBUYA / OMOTESANDO / HARAJUKU -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Shibuya · Omotesando · Harajuku <span class="rec-area-name-jp">渋谷・表参道・原宿</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Miyashita Park</strong> <span class="activity-tag tag-nature">Sightseeing</span>
+        <span class="rec-note">Rooftop park above Shibuya with shops, restaurants, wall climbing and sports facilities. Free to enter.</span></div>
+      <div class="rec-item"><strong>Wagyu Yakiniku Nikutarashi</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">A5 Kobe beef &amp; wagyu yakiniku at affordable prices — 1-34-3 Yoyogi, Shibuya. @nikutarashi0029 on Instagram.</span></div>
+      <div class="rec-item"><strong>Kakida (立喰鮨かきだ)</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Standing sushi bar with fresh sushi and wide drinks selection — Shibuya Scramble Square 2F, directly connected to Shibuya Station.</span></div>
+      <div class="rec-item"><strong>Mukai (海鮮処向井)</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Hidden seafood rice bowl in a residential Shibuya pocket — finish with hot dashi poured over. 15-6 Shinsencho, Shibuya.</span></div>
+      <div class="rec-item"><strong>Katsuo Shokudo</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Michelin Bib Gourmand breakfast with bonito shavings — ~¥1,500 (~$11). Shibuya area.</span></div>
+      <div class="rec-item"><strong>Togoshiya</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Onigiri breakfast spot — Shibuya.</span></div>
+      <div class="rec-item"><strong>Hikiniku To Come</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Hamburger patties on rice with raw egg — Shibuya.</span></div>
+      <div class="rec-item"><strong>Tofu Cuisine Sorano</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Tofu-focused dinner restaurant — Shibuya.</span></div>
+      <div class="rec-item"><strong>Shabu Shabu Kintan Omotesando</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Wagyu shabu shabu set ~$28 — 5 meat cuts, 6 soup bases, unlimited veggies + rice + curry + dessert. Lunch from $20. Reserve online especially on weekends.</span></div>
+      <div class="rec-item"><strong>Baso Omotesando</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Exceptional soba — pork belly / duck / tempura sunny-side-up egg highlights. Near Omotesando. @baso_omotesando on Instagram.</span></div>
+      <div class="rec-item"><strong>Ikina Sushi Dokoro Abe Aoyama</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Affordable high-quality omakase — lunch ~$35. GEMS Aoyama CROSS B1F, 5-46-7 Jingumae, Shibuya.</span></div>
+      <div class="rec-item"><strong>Den Kushi Flori</strong> <span class="activity-tag tag-food">Food</span> <span class="activity-tag tag-note">1★ Michelin</span>
+        <span class="rec-note">French-Japanese skewer tasting menu — GEMS Aoyama CROSS B1A, 5-46-7 Jingumae. Reservation required.</span></div>
+      <div class="rec-item"><strong>Amam Dacotan</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Artisan bakery — bread, croissants, donuts. Long daily queues. 5-17-6 Jingumae, 5 min from Omotesando Station. Don't miss the donuts.</span></div>
+    </div>
+  </div>
+
+  <!-- SHINJUKU -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Shinjuku <span class="rec-area-name-jp">新宿</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Tokyo Metropolitan Government Building</strong> <span class="activity-tag tag-nature">Sightseeing</span>
+        <span class="rec-note">Free nightly projection mapping show — Guinness World Record for longest-running. Check tokyoprojectionmappingproject.jp/en for times. Free every night.</span></div>
+      <div class="rec-item"><strong>Shinjuku Gyoen National Garden</strong> <span class="activity-tag tag-nature">Sightseeing</span>
+        <span class="rec-note">One of Tokyo's largest parks — wide lawns, trees, ponds, and seasonal flowers. ¥500 entry.</span></div>
+      <div class="rec-item"><strong>Hanazono Shrine</strong> <span class="activity-tag tag-temple">Sightseeing</span>
+        <span class="rec-note">Ancient Shinto shrine just minutes from Shinjuku Station — 5-17-3 Shinjuku. Free entry.</span></div>
+      <div class="rec-item"><strong>Uogashi Nihon-Ichi Standing Sushi</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Excellent value standing sushi — otoro, uni, seared squid available. English touchscreen ordering. Bill under ~SGD50 for a large meal. 1-12-12 Nishishinjuku.</span></div>
+      <div class="rec-item"><strong>Kikanbo</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Very spicy ramen — highly recommended by locals. Shinjuku area (confirm address on Google Maps).</span></div>
+      <div class="rec-item"><strong>Sakimoto Bakery (嵜本ベーカリー)</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Premium milk bread in seasonal flavours (pistachio, matcha, etc.) — Odakyu Dept Store B2F, 1-5-5 Nishishinjuku.</span></div>
+      <div class="rec-item"><strong>Bakery Mignon</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Croissants with popular seasonal flavours — said to be among the best in Japan. Shinjuku (confirm address on Google Maps).</span></div>
+    </div>
+  </div>
+
+  <!-- NAKAMEGURO / EBISU -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Nakameguro · Ebisu <span class="rec-area-name-jp">中目黒・恵比寿</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Onibus Coffee</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Specialty coffee shop beloved by locals — great views of the train tracks. Nakameguro.</span></div>
+      <div class="rec-item"><strong>Sushi Hatsume</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">22-course omakase from an ex-Michelin chef — salmon roe, uni, fatty tuna highlights. Ebisu area. ~¥10,000. @sushi.hatsume on Instagram.</span></div>
+      <div class="rec-item"><strong>Truffle Bakery</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Artisan bakery specializing in truffle bread and pastries. ~10 min wait at Ebisu store. Multiple locations.</span></div>
+      <div class="rec-item"><strong>Trufful</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Truffle cheese tarts and pastries ~$2 USD — newly opened, no lines yet. 3 min from Ebisu Station. @trufful_official on Instagram.</span></div>
+    </div>
+  </div>
+
+  <!-- ROPPONGI -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Roppongi <span class="rec-area-name-jp">六本木</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>L'Atelier de Joël Robuchon</strong> <span class="activity-tag tag-food">Food</span> <span class="activity-tag tag-note">2★ Michelin</span>
+        <span class="rec-note">French fine dining — lunch menu from ¥3,500. Roppongi Hills, Minato-ku.</span></div>
+      <div class="rec-item"><strong>Yakiuo Ishikawa</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Grilled seafood + 3-color donburi (tuna / uni / salmon roe) — ~€100/person full course. GEMS Roppongi 5F, 6-2-6 Roppongi. @yakiuo6pongi on Instagram.</span></div>
+      <div class="rec-item"><strong>Daitokujyu</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Kobe beef yakiniku by a 3rd generation restaurateur — standard $70 / special $95 / Kobe premium $148. Book on their website. @daitokujyu_tokyo on Instagram.</span></div>
+    </div>
+  </div>
+
+  <!-- SHINAGAWA -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Shinagawa <span class="rec-area-name-jp">品川</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Kaisen Sushi Toriton</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Hokkaido-style fresh non-rotating sushi — tuna, salmon, mantis shrimp, cod roe. From ¥143/2 pcs; avg ¥3,000–¥4,000. Atre Shinagawa 4F, 1 min from Shinagawa Station. Mon–Sat 11am–11pm.</span></div>
+    </div>
+  </div>
+
+  <!-- IKEBUKURO -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Ikebukuro <span class="rec-area-name-jp">池袋</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Izumo Ikebukuro</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Unagi (eel) specialist — giant omurice rice ball 1.5kg+ and unagi butter skewers. Come very hungry. @izumo_ikebukuro on Instagram.</span></div>
+    </div>
+  </div>
+
+  <!-- TOYOSU -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Toyosu <span class="rec-area-name-jp">豊洲</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Iroha Seafood Buffet</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">All-you-can-eat bluefin tuna and snow crab — tuna cutting shows on select days. 6-5-4 Toyosu (4 min from Ichiba-mae Station). Hours: 9am–4pm (last entry 3pm). DM @explorejapan.his for reservations.</span></div>
+    </div>
+  </div>
+
+  <!-- SETAGAYA -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Setagaya <span class="rec-area-name-jp">世田谷</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Gotokuji Temple</strong> <span class="activity-tag tag-temple">Sightseeing</span>
+        <span class="rec-note">Lucky cat (maneki-neko) temple — hundreds of white ceramic lucky cats. 2-24-7 Gotokuji, Setagaya (~20 min from Shinjuku by train). Free entry.</span></div>
+      <div class="rec-item"><strong>Shiro-Hige's Cream Puff Factory</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Ghibli-themed cream puff shop — Totoro-shaped choux pastry. 5-3-1 Daita, Setagaya. Pairs well with a Gotokuji Temple visit.</span></div>
+    </div>
+  </div>
+
+  <!-- KICHIJOJI / MITAKA -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Kichijoji · Mitaka <span class="rec-area-name-jp">吉祥寺・三鷹</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Ghibli Museum</strong> <span class="activity-tag tag-nature">Sightseeing</span>
+        <span class="rec-note">Studio Ghibli's official museum — magical themed exhibits and short films. 1-1-83 Shimorenjaku, Mitaka (inside Inokashira Park). Book months ahead at ghibli-museum.jp.</span></div>
+      <div class="rec-item"><strong>Inokashira Park</strong> <span class="activity-tag tag-nature">Sightseeing</span>
+        <span class="rec-note">Beautiful green park with pond and rowboats — adjacent to the Ghibli Museum. Great for cherry blossoms 🌸 in late March. Free entry.</span></div>
+      <div class="rec-item"><strong>Egg Kichijoji</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Wagyu tartare TKG (tamago kake gohan — raw egg over rice) — ¥1,500. @egg_kichijoji on Instagram.</span></div>
+    </div>
+  </div>
+
+  <!-- JIYUGAOKA -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Jiyugaoka <span class="rec-area-name-jp">自由が丘</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Milkland Hokkaido to Tokyo</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Hokkaido milk flight — choose 3 from 9 varieties (different fat % and regions) for ¥220. Also serves Hokkaido milk desserts and soft serve.</span></div>
+    </div>
+  </div>
+
+  <!-- MULTIPLE LOCATIONS -->
+  <div class="rec-area-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Multiple Locations <span class="rec-area-name-jp">各地</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Manten Sushi</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Omakase — monkfish liver, baby tuna, uni handroll highlights. Good value. @sushimanten on Instagram for address.</span></div>
+      <div class="rec-item"><strong>Yakiniku Like</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Solo yakiniku — quick, affordable, English touchscreen ordering. Great for a first meal on arrival. Multiple locations (Shinjuku, Shibuya, etc.).</span></div>
+      <div class="rec-item"><strong>Torikizoku Izakaya</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Budget izakaya — everything (food and drinks) is ¥350. Deep fried chicken skin and ramen are standouts. Reserve online for busy times. Multiple locations.</span></div>
+      <div class="rec-item"><strong>Nikuya Yokocho</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">All-you-can-eat wagyu yakiniku with drinks ~¥8,000. Akihabara and Shibuya locations.</span></div>
+      <div class="rec-item"><strong>Hatoya</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Ranked #2 matcha latte in Tokyo — also try the roasted matcha latte for a nutty flavour.</span></div>
+      <div class="rec-item"><strong>Ippuku &amp; Matcha</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Ranked #3 matcha latte in Tokyo.</span></div>
+      <div class="rec-item"><strong>Atelier Matcha</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Ranked #4 matcha latte in Tokyo.</span></div>
+      <div class="rec-item"><strong>Kirimugiya Jinroku (切麦屋甚六)</strong> <span class="activity-tag tag-food">Food</span>
+        <span class="rec-note">Michelin-recommended udon under $10. ⚠️ Reported temporarily closed — verify current status before visiting.</span></div>
+      <div class="rec-item"><strong>Red Torii Gates &amp; Bamboo near Tokyo</strong> <span class="activity-tag tag-nature">Sightseeing</span>
+        <span class="rec-note">Kyoto-like scenery without leaving greater Tokyo — torii tunnels, bamboo groves, and the Edo-era canal town of Sawara (Chiba Prefecture). Less crowded than Kyoto equivalents.</span></div>
+    </div>
+  </div>
+
+  <!-- ── PART 2: DRUGSTORE & SHOPPING ── -->
+  <div class="rec-divider" style="margin-top:36px;"><div class="rec-divider-title">🛍 Drugstore &amp; Shopping</div></div>
+
+  <!-- DRUGSTORE SNACKS -->
+  <div class="rec-area-card products-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Drugstore Snacks <span class="rec-area-name-jp">お菓子</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Buy at Matsumoto Kiyoshi or Sugi Pharmacy</strong> — cheaper than Don Quijote or convenience stores.
+        <span class="rec-note">Moonlight Cookies · Alfort · Rumando · Meltykiss · Galbo · Corn Potage Snack · Airial Cheddar Cheese · Calbee Shiawase Butter Chips · Kataage Potato Kansai Dashi Shoyu · Toppo · Mocchu Muscat · Pyuararu Gummy · Nama Ume Ame</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DON QUIJOTE -->
+  <div class="rec-area-card products-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Don Quijote Must-Buys <span class="rec-area-name-jp">ドン・キホーテ</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>Megurhythm Hot Eye Masks</strong>
+        <span class="rec-note">Sleep aid — great for long flights and jet lag recovery.</span></div>
+      <div class="rec-item"><strong>UHA Mikakuto Gummy Supplements</strong>
+        <span class="rec-note">Iron &amp; vitamin C gummies.</span></div>
+      <div class="rec-item"><strong>Pokemon Noodles</strong>
+        <span class="rec-note">A classic souvenir / gift.</span></div>
+      <div class="rec-item"><strong>Hada Labo Shirojun Premium Toner</strong>
+        <span class="rec-note">Brightening skincare toner — hard to find at this price outside Japan.</span></div>
+      <div class="rec-item"><strong>Shirts Cool Spray</strong>
+        <span class="rec-note">Menthol cooling spray — very useful for warm or humid days.</span></div>
+    </div>
+  </div>
+
+  <!-- PHARMACY & HEALTH -->
+  <div class="rec-area-card products-card">
+    <div class="rec-area-header">
+      <div class="rec-area-name">Pharmacy &amp; Health <span class="rec-area-name-jp">薬局</span></div>
+    </div>
+    <div class="rec-items">
+      <div class="rec-item"><strong>JINS Eyeglasses</strong>
+        <span class="rec-note">Affordable prescription glasses with same-day service (~1 hour). Free eye exam included. JINS stores across Tokyo.</span></div>
+      <div class="rec-item"><strong>Nodo-nuru Moist Mask (Kobayashi Pharmaceutical)</strong>
+        <span class="rec-note">Moisture mask for throat — great for flights and dry hotel air. Any Japanese pharmacy.</span></div>
+      <div class="rec-item"><strong>Asada Ame Azulene CPC Drops</strong>
+        <span class="rec-note">Throat drops — anti-inflammatory and soothing. Any Japanese pharmacy.</span></div>
+      <div class="rec-item"><strong>Nodo-nuru Pain Relief Capsules (Kobayashi Pharmaceutical)</strong>
+        <span class="rec-note">Stronger throat pain relief capsules. Any Japanese pharmacy.</span></div>
+      <div class="rec-item"><strong>General OTC Travel Medicines</strong>
+        <span class="rec-note">Bufferin (pain/fever), throat spray, cold &amp; flu meds — available at any Japanese pharmacy.</span></div>
+    </div>
+  </div>
+
+</section>
+
 </main>
 
 <footer>
@@ -1437,6 +1849,17 @@
     header.addEventListener('click', () => {
       card.classList.toggle('collapsed');
     });
+  });
+
+  // Collapsible rec-area-cards
+  document.querySelectorAll('.rec-area-card').forEach(card => {
+    const header = card.querySelector('.rec-area-header');
+    if (!header) return;
+    const chevron = document.createElement('span');
+    chevron.className = 'rec-area-chevron';
+    chevron.textContent = '▾';
+    header.appendChild(chevron);
+    header.addEventListener('click', () => card.classList.toggle('collapsed'));
   });
 
   // City navigation
